@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放列表</title>
+    <style>
+  <style>
+/* 简单的样式 */
+.playlist {
+  list-style-type: none;
+  padding: 0;
+}
+.playlist li {
+  margin-bottom: 10px;
+}
+
+/* 新增的按钮样式 */
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #4CAF60;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px;
+  width: 120px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  position: relative; /* 添加这个属性以便 .button span:after 可以正确定位 */
+}
+
+.button span {
+  display: block; /* 使用 block 替代 inline-block，以便 span 元素占据整个按钮的宽度 */
+  padding-right: 0; /* 初始状态没有右内边距 */
+  transition: padding-right 0.5s; /* 只过渡 padding-right 属性 */
+}
+
+.button span:after {
+  content: '\00bb'; /* 这是一个右箭头 */
+  position: absolute;
+  opacity: 0;
+  top: 50%; /* 垂直居中 */
+  right: -20px; /* 初始位置在按钮外部 */
+  transform: translateY(-50%); /* 垂直居中 */
+  transition: opacity 0.5s, right 0.5s; /* 过渡 opacity 和 right 属性 */
+}
+
+.button:hover span {
+  padding-right: 25px; /* 悬停时增加右内边距，为 :after 元素腾出空间 */
+}
+
+.button:hover span:after {
+  opacity: 1; /* 悬停时显示箭头 */
+  right: 0; /* 悬停时将箭头移动到按钮内部 */
+}
+</style>
+
+    </style>
+</head>
+<body>
+
+<audio id="myAudio" preload=" oone" controls>
+    <source id="audioSource" src="" type="audio/mpeg">
+    您的浏览器不支持audio元素。
+</audio>
+<li>
+  <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VmZ0lfS2NWWDJsQmtkSGk1UWFhc3pzQmxsaEp2Rk43dEtaTExTYU15RHEwNEE.mp3')">告白气球</button>
+</li>
+<li>
+  <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VVejhueWJKR0JWR3FVMUh5bzF1YnNNQjdCWUJaRUlEdWJieXlNOTBCMXVkOXc.mp3')">搁浅</button>
+</li>
+<li>
+  <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VjT05abVp3TGhWRnBHVkFNMTRLbVhVQmZfM28wandCMlh2VndKSVdjczBHMFE.mp3')">红颜如霜</button>
+</li>
+    <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VmZ0lfS2NWWDJsQmtkSGk1UWFhc3pzQmxsaEp2Rk43dEtaTExTYU15RHEwNEE.mp3')">告白气球</button>
+    </li>
+    <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VVejhueWJKR0JWR3FVMUh5bzF1YnNNQjdCWUJaRUlEdWJieXlNOTBCMXVkOXc.mp3')">搁浅</button>
+    </li>
+    <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VjT05abVp3TGhWRnBHVkFNMTRLbVhVQmZfM28wandCMlh2VndKSVdjczBHMFE.mp3')">红颜如霜</button>
+    </li>
+    <!-- 更多歌曲... -->
+     <li>
+        <button class="button" onclick="https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VjWTZqbUR5c0F4R3BFMks5anVrRTN3Qk55bUJLVDBnRWIyTHBOekxIb1ROekE.mp3')">晴天</button>
+    </li>
+     <li>
+        <button class="button" onclick="playAudio(https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VRejRNVDVCVmp0SGpwV2dkcm9VT0VBQnF5VGNzWGZsT1cxa2kxNmVod3BUbHc.mp3')">一路向北</button>
+    </li>
+     <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VmOVl3Vk53eWtSS2tUTEZ3XzV0aS1jQm5PdldFWXc5bDBMU3NmZzMwZnhhSUE.mp3')">明明就</button>
+    </li>
+     <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0ViSTZISWVYWlROR3NaNkJGNVotRHc0QkdKOC10LXRjZ0xCa3ZNOHk5aklQRHc.mp3')">稻香</button>
+    </li>
+     <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VkSjYtdG1qcUQxRHFXTjhkQTVmaUM0QnBtN01rb1pYY0lHYlVWRmtLMGQwMHc.flac')">圣诞星</button>
+    </li>
+     <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VSeW00bUthcEhGQWw5SW1yWk9qUlNvQmRJMUItU1NZUHFTaEgySUozNWtndEE.mp3')">错过的烟火</button>
+    </li>
+     <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VSeW00bUthcEhGQWw5SW1yWk9qUlNvQmRJMUItU1NZUHFTaEgySUozNWtndEE.mp3')">红模仿</button>
+    </li>
+     <li>
+        <button class="button" onclick="playAudio(https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VTTnBSQmVydjFkSHN2bC1IaVNkeWo4QmVKd3NhdzNJeHVlUXdJS1RDVUlHa0E.mp3')">牛仔很忙</button>
+    </li>
+     <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VkT3U5a0R2Z1psR29oZnR0TlFfSmhjQmZWU1gzVVlNQ3gzdE4zekIwczJfTGc.mp3')">Mojito</button>
+    </li>
+     <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VaZF84cWdsZ3ZOS3RKcEkwby1SMzdRQlNlOFhrb0k2VlR2VFFReGhaLVJUT0E.mp3')">不能说的秘密</button>
+    </li>
+ <li>
+        <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VXajFxbDVwMlZCRnVzQTNuTEZTZzZNQldoN2tTaHNFd3h1N3NsTDB2ZFJFWGc.mp3')">我是如此相信</button>
+    </li>
+  <li>
+         <button class="button" onclick="playAudio('https://dlink.host/musics/aHR0cHM6Ly8xZHJpdi1teS5zaGFyZXBvaW50LmNvbS86dTovZy9wZXJzb25hbC9zdG9yXzFkcml2X29ubWljcm9zb2Z0X2NvbS9FWUdJcGV0VDBUNUt0Ym5WWjRJSzlxd0JTa096aHF5NGNhS0JxMnIzTFhxMGVn.flac')">蒲公英的约定</button>
+    </li>
+</ul>
+
+<script>
+    function playAudio(song) {
+        var audioElement = document.getElementById('myAudio');
+        var sourceElement = document.getElementById('audioSource');
+        sourceElement.src = song; // 更新歌曲源
+        audioElement.load(); // 加载新歌曲
+        audioElement.play(); // 播放歌曲
+    }
+</script>
+
+</body>
+</html>
